@@ -8,6 +8,7 @@ Unified is an education management platform for institutions that need one syste
 
 The core workspace is split into a FastAPI backend and a React-based web interface. Together they provide authenticated access for administrators, teachers, and students, with operational tooling for user management, group management, schedules, assessment data, and spreadsheet-style academic workflows.
 
+
 ## Core Repositories
 
 | Repository | Purpose | Stack |
