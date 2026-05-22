@@ -1,40 +1,57 @@
 <p align="center">
-  <img src="./assets/unified-logo.png" alt="Unified logo" width="140" />
+  <img src="./assets/unified-bg.png" alt="Unified education platform preview" width="100%" />
 </p>
 
 # Unified
 
-Unified is an education management platform for institutions that need one system for identity, academic records, schedules, grades, and role-specific learning workflows.
+Unified is an education management platform for schools and academic teams that need one place for identity, schedules, grades, records, and role-specific workflows.
 
-The core workspace is split into a FastAPI backend and a React-based web interface. Together they provide authenticated access for administrators, teachers, and students, with operational tooling for user management, group management, schedules, assessment data, and spreadsheet-style academic workflows.
+The platform combines a FastAPI service with a React web client for administrators, teachers, and students.
 
+## Product Scope
 
-## Core Repositories
+Unified focuses on the operational core of an academic environment:
 
-| Repository | Purpose | Stack |
+- Central user identity for admins, teachers, and students.
+- Academic groups, teacher assignments, disciplines, and student profiles.
+- Calendar-based lesson planning with homework, topics, classrooms, and metadata.
+- Grade and assessment workflows connected to groups and disciplines.
+- Spreadsheet-style import/export support for structured academic data.
+- Secure access patterns for authenticated, role-specific workspaces.
+
+## Repositories
+
+| Repository | Role | Stack |
 | --- | --- | --- |
-| `unified-api` | Backend API for authentication, users, groups, students, teachers, schedules, grades, lesson attachments, caching, and rate limiting. | Python 3.11, FastAPI, MongoDB, Redis, PyJWT, Google OAuth, Cloudinary, Docker |
-| `unified-web` | Web application and local proxy server for the Unified interface. Includes admin, student, and teacher views. | React, TypeScript, Vite, Express, TanStack Query, Tailwind CSS, Radix UI, Framer Motion |
+| `unified-api` | Versioned backend for authentication, users, groups, students, teachers, schedules, grades, assessments, and lesson files. | Python, FastAPI, MongoDB, Redis, JWT, Google OAuth, Cloudinary, Docker |
+| `unified-web` | Browser workspace with admin, teacher, and student views, plus a local Express proxy for API access. | React, TypeScript, Vite, Express, TanStack Query, Tailwind CSS, Radix UI |
 
-## Platform Capabilities
+## Core Capabilities
 
-- Role-based authentication using password login, Google OAuth, bearer tokens, token validation, refresh, logout, and Redis-backed token revocation.
-- Administrative tools for searching, updating, deleting, and listing users by role.
-- Student and teacher onboarding forms with domain-specific validation.
-- Group-aware schedule management with lesson creation, editing, deletion, calendar/list views, homework, topics, classrooms, and lesson metadata.
-- Grade and assessment workflows, including group/discipline selection and spreadsheet import/export support.
-- Student and teacher dashboards tailored to their schedules, lessons, grades, and settings.
-- API protection through CORS configuration, session middleware, role-aware rate limiting, and structured request validation.
-- Docker-oriented backend deployment with Nginx reverse proxy support.
+- Role-based access for administrators, teachers, and students.
+- Password and Google OAuth authentication with token refresh and revocation.
+- User, group, student, teacher, schedule, grade, and assessment workflows.
+- Student and teacher dashboards for lessons, calendars, grades, and settings.
+- Spreadsheet-oriented academic data handling.
+- Redis-backed caching and rate limiting.
+- Docker-ready API deployment with Nginx support.
 
-## Quality Standards
+## Role Workflows
 
-- Keep API behavior documented through versioned routes and generated OpenAPI output.
-- Validate request/response shapes at service boundaries with Pydantic or Zod.
+| Role | Primary workflows |
+| --- | --- |
+| Admin | Manage users, students, teachers, groups, schedules, settings, and spreadsheet data. |
+| Teacher | Review assigned groups, manage schedules, edit lessons, and work with grade data. |
+| Student | View lessons, schedules, grades, and personal workspace settings. |
+
+## Engineering Standards
+
+- Keep backend contracts explicit through FastAPI route definitions, Pydantic schemas, and generated OpenAPI docs.
+- Keep frontend request and form boundaries typed with TypeScript, TanStack Query, and Zod where appropriate.
+- Protect sensitive operations with role checks, token validation, CORS configuration, session middleware, and rate limits.
 - Prefer focused tests around authentication, route contracts, and high-risk academic workflows.
-- Keep frontend features role-aware and consistent across admin, teacher, and student experiences.
-- Avoid storing secrets in the repository; use local environment files or deployment-managed secrets.
+- Store secrets outside the repository in local `.env` files or deployment-managed secret stores.
 
 ## License
 
-Unified is released under the MIT License. See the repository license files for details.
+Unified is released under the MIT License.
