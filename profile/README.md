@@ -8,18 +8,6 @@ Unified is an education management platform for institutions that need one syste
 
 The core workspace is split into a FastAPI backend and a React-based web interface. Together they provide authenticated access for administrators, teachers, and students, with operational tooling for user management, group management, schedules, assessment data, and spreadsheet-style academic workflows.
 
-## Product Preview
-
-### Authentication
-
-<img src="./assets/unified-login.png" alt="Unified login screen with code, password, and Google sign-in options" width="900" />
-
-### Student Workspace
-
-<img src="./assets/unified-student-home.png" alt="Unified student home dashboard with navigation cards for items, schedule, and settings" width="900" />
-
-<img src="./assets/unified-student-schedule.png" alt="Unified student schedule view with calendar and class details" width="900" />
-
 ## Core Repositories
 
 | Repository | Purpose | Stack |
